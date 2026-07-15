@@ -60,6 +60,21 @@ The primary goal of this project is to simulate real-world cyber attacks and val
 
 ---
 
+# Lab Network
+
+Network: **192.168.120.0/24**
+
+| Device | Hostname | Operating System | Role | IP Address |
+|----------|----------|------------------|------|------------|
+| pfSense | pfsense | pfSense CE | Router / Firewall | 192.168.120.254 |
+| Kali Linux | kali | Kali Linux | Attacker | 192.168.120.105 |
+| Windows 11 | win11 | Windows 11 Pro | Victim Workstation | 192.168.120.110 |
+| Nextcloud | Nextcloud Clone | Ubuntu Server | Linux Target | 192.168.120.103 |
+| Wazuh | wazuh | Ubuntu Server | SIEM / EDR | 192.168.120.102 |
+| Security Onion | securityonion | Oracle Linux | NDR / IDS | 192.168.120.150 |
+
+---
+
 # Virtual Machines
 
 | Machine | Purpose |
