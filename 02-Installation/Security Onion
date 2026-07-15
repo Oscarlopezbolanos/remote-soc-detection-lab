@@ -1,0 +1,112 @@
+# Security Onion Deployment
+
+## Overview
+
+Security Onion serves as the Network Detection and Response (NDR) platform for this cybersecurity lab.
+
+It provides network monitoring, intrusion detection, packet capture, threat hunting, and centralized visibility into all traffic traversing the lab network.
+
+The deployment is integrated with pfSense and Wazuh to create a complete SOC environment.
+
+---
+
+# Purpose
+
+Security Onion provides:
+
+- Network Detection & Response
+- Intrusion Detection
+- Network Security Monitoring
+- Full Packet Capture
+- Threat Hunting
+- Network Traffic Analysis
+- Elastic Stack
+- Fleet Management
+
+---
+
+# Core Components
+
+Security Onion includes:
+
+- Zeek
+- Suricata
+- Elasticsearch
+- Kibana
+- Fleet
+- Elastic Agent
+- Strelka
+- SOC Dashboard
+
+---
+
+# Virtual Machine Configuration
+
+| Setting | Value |
+|----------|-------|
+| Operating System | Oracle Linux |
+| Role | NDR / IDS |
+| Memory | 16 GB |
+| CPU | 6 vCPU |
+| Storage | 300 GB |
+| IP Address | 192.168.120.150 |
+
+---
+
+# Deployment
+
+Security Onion was installed in Standalone mode inside VirtualBox.
+
+The web interface is accessible securely over HTTPS.
+
+---
+
+# Major Challenges
+
+This deployment required extensive troubleshooting.
+
+Issues encountered included:
+
+- Host-Only networking configuration
+- VirtualBox adapter configuration
+- Container startup verification
+- Management IP changes
+- HTTPS connectivity
+- Browser access
+- Docker health monitoring
+- Highstate synchronization
+- Remote access configuration
+
+One major issue occurred after changing the management IP from:
+
+192.168.120.130
+
+to
+
+192.168.120.150
+
+The web interface continued redirecting to the old IP address.
+
+This was resolved using:
+
+```
+sudo so-ip-update
+```
+
+followed by a system reboot and verification of all containers.
+
+---
+
+# Remote Access
+
+Security Onion is securely accessible remotely using Tailscale without exposing public ports.
+
+This provides encrypted Zero Trust remote administration from trusted devices.
+
+---
+
+# Lessons Learned
+
+Deploying Security Onion required a deep understanding of networking, Linux administration, Docker, HTTPS, routing, and troubleshooting.
+
+This deployment significantly improved my understanding of enterprise NDR architecture and provided hands-on experience with technologies commonly used in Security Operations Centers.
