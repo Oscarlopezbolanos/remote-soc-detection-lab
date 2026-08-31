@@ -60,7 +60,7 @@ This network contains systems used for attack simulation and investigation.
 | pfSense | Gateway / Firewall | `192.168.140.254` |
 | Windows | Windows Victim Workstation | `192.168.140.110` |
 | Nextcloud Clone | Ubuntu / Linux Target | `192.168.140.103` |
-| Metasploitable 3 | Vulnerable Attack Target | Planned |
+| Metasploitable 3 | Vulnerable Attack Target | `192.168.140.111` |
 
 The Nextcloud system used in this segment is a lab clone and not the primary production instance.
 
