@@ -27,8 +27,3 @@
                                                   │
                                            Metasploitable 3
                                               Planned Target
-```
-
----
-
-# Network Segmentation
