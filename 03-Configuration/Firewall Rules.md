@@ -12,11 +12,78 @@ All virtual machines communicate through pfSense, allowing centralized control o
 
 Lab Network
 
-192.168.120.0/24
+## Security / Management Network
+
+**Network:** `192.168.120.0/24`
+
+**pfSense Gateway:** `192.168.120.254`
+
+This network contains security monitoring and management infrastructure.
+
+| Device | Role | IP Address |
+|---|---|---|
+| pfSense | Gateway / Firewall | `192.168.120.254` |
+| Wazuh | SIEM / Endpoint Security Monitoring | `192.168.120.102` |
+| Security Onion | Network Security Monitoring / NDR | `192.168.120.150` |
+
+---
+
+## Attacker Network
+
+**Network:** `192.168.130.0/24`
+
+**pfSense Gateway:** `192.168.130.254`
+
+This network contains systems used to generate controlled malicious traffic.
+
+| Device | Role | IP Address |
+|---|---|---|
+| pfSense | Gateway / Firewall | `192.168.130.254` |
+| Kali Linux | Attack Platform | `192.168.130.105` |
+
+Kali cannot communicate with victim systems at Layer 2.
+
+Traffic destined for the victim network must be routed through pfSense.
+
+---
+
+## Victim Network
+
+**Network:** `192.168.140.0/24`
+
+**pfSense Gateway:** `192.168.140.254`
+
+This network contains systems used for attack simulation and investigation.
+
+| Device | Role | IP Address |
+|---|---|---|
+| pfSense | Gateway / Firewall | `192.168.140.254` |
+| Windows | Windows Victim Workstation | `192.168.140.110` |
+| Nextcloud Clone | Ubuntu / Linux Target | `192.168.140.103` |
+| Metasploitable 3 | Vulnerable Attack Target | Planned |
+
+The Nextcloud system used in this segment is a lab clone and not the primary production instance.
+
+---
+
+# pfSense Interface Architecture
+
+pfSense acts as the routing and security boundary between all lab networks.
+
+| pfSense Interface | Virtual Network | Address | Purpose |
+|---|---|---|---|
+| WAN (`le0`) | VirtualBox NAT | DHCP | Internet Access |
+| LAN (`em0`) | Attacker Network | `192.168.130.254/24` | Kali / Attack Infrastructure |
+| OPT1 (`em1`) | Security Network | `192.168.120.254/24` | Security & Management |
+| OPT2 (`le1`) | Victim Network | `192.168.140.254/24` | Vulnerable / Victim Systems |
+
+
 
 Gateway
 
 192.168.120.254
+192.168.130.254
+192.168.140.254
 
 ---
 
