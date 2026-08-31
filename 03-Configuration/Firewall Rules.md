@@ -81,9 +81,9 @@ pfSense acts as the routing and security boundary between all lab networks.
 
 Gateway
 
-192.168.120.254
-192.168.130.254
-192.168.140.254
+192.168.120.254, 
+192.168.130.254, 
+192.168.140.254, 
 
 ---
 
